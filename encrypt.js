@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { stringify } = require("querystring");
 
 class Encrypt {
     
@@ -56,6 +57,58 @@ class Encrypt {
 
         return encrypt_text;
     }
+
+    static preprocessing_mod27(text) {
+
+        let preprocessed_text = "";
+        
+        for (let i = 0; i < text.length; ++i) {
+            if(text[i] === 'Á' ||  text[i] === 'á')
+                preprocessed_text += 'A';
+
+            else if(text[i] === 'É' ||  text[i] === 'é')
+                preprocessed_text += 'E';
+            
+            else if(text[i] === 'Í' ||  text[i] === 'í')
+                preprocessed_text += 'I';
+            
+            else if(text[i] === 'Ó' ||  text[i] === 'ó')
+                preprocessed_text += 'O';
+            
+            else if(text[i] === 'Ú' ||  text[i] === 'ú')
+                preprocessed_text += 'U';
+            
+            else if(text[i] === 'Ñ' ||  text[i] === 'ñ')
+                preprocessed_text += 'Ñ';
+            
+            else if(text[i] < 'A' || text[i] > 'z' || (text[i] > 'Z' && text[i] < 'a'))
+                continue;
+
+            else if(text[i] >= 'a')
+                preprocessed_text += String.fromCharCode((text[i].charCodeAt(0) - 32));
+            
+            else
+                preprocessed_text += text[i];
+        }
+
+        return preprocessed_text;
+    }
+
+    static preprocessing_mod191(text) {
+
+        let preprocessed_text = "";
+
+        for (let i = 0; i < text.length; ++i) {
+            if(text[i] < '!' || text[i] > 'ÿ')
+                continue;
+            
+            else
+                preprocessed_text += text[i];
+        }
+
+        return preprocessed_text;
+    } 
+
 
     static #fill_vignere_table(table, mode) {
 
