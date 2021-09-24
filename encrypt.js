@@ -12,7 +12,7 @@ class Encrypt {
             if (j === key.length) j = 0;
             let value_text_character = parseInt(vignere_table[text[i]]);
             let value_key_character = parseInt(vignere_table[key[j]]);
-            let suma = ( value_text_character + value_key_character) % n_characters;
+            let suma = (value_text_character + value_key_character) % n_characters;
             encrypt_text += this.#get_key(vignere_table, suma.toString());
         }
         
@@ -34,11 +34,27 @@ class Encrypt {
             if(result < 0)
                 result = n_characters + result;
 
-            console.log(value_text_character, value_key_character, result);
             decrypt_text += this.#get_key(vignere_table, result.toString());
         }
 
         return decrypt_text;
+    }
+
+    static autokey(text, key, mode) {
+
+        let encrypt_text = "";
+        const vignere_table = {};
+        let n_characters = this.#fill_vignere_table(vignere_table, mode);
+        let new_key = key + text;
+
+        for (let i = 0; i < text.length; ++i) {
+            let value_text_character = parseInt(vignere_table[text[i]]);
+            let value_key_character = parseInt(vignere_table[new_key[i]]);
+            let suma = (value_text_character + value_key_character) % n_characters;
+            encrypt_text += this.#get_key(vignere_table, suma.toString());
+        }
+
+        return encrypt_text;
     }
 
     static #fill_vignere_table(table, mode) {
