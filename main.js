@@ -38,3 +38,8 @@ let decrypt_text_mod27 = Encrypt.decrypt_vignere(data_ejercicio15, "HIELO", 0);
 fs.writeFileSync('./results/Ejercicio15.txt', decrypt_text_mod27);
 
 
+// Ejercicio 18
+let data_ejercicio18 = fs.readFileSync(`./resources/Ejercicio18_text.txt`,'utf-8');
+let decrypt_autokey = Encrypt.decrypt_autokey(data_ejercicio18, "UNODELOSMASGRANDESCRIPTOGRAFOS", 0);
+fs.writeFileSync('./results/Ejercicio18_autokey.txt', decrypt_autokey);
+
