@@ -112,15 +112,21 @@ class Encrypt {
     static frecuencies(text) {
 
         const frecuency_table = {};
+        const ordered_frecuency_table = {};
 
         for (let i = 0; i < text.length; ++i) {
-            if(frecuency_table[text[i]])
+            if(frecuency_table[text[i]] !== undefined)
                 frecuency_table[text[i]]++;
+
             else
-                frecuency_table[text[i]] = 0;
+                frecuency_table[text[i]] = 1;
         }
 
-        return frecuency_table;
+        Object.keys(frecuency_table).sort().forEach(function(key) {
+            ordered_frecuency_table[key] = frecuency_table[key];
+        });
+
+        return ordered_frecuency_table;
     }
 
 
