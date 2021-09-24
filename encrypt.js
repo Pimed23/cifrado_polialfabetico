@@ -107,7 +107,21 @@ class Encrypt {
         }
 
         return preprocessed_text;
-    } 
+    }
+    
+    static frecuencies(text) {
+
+        const frecuency_table = {};
+
+        for (let i = 0; i < text.length; ++i) {
+            if(frecuency_table[text[i]])
+                frecuency_table[text[i]]++;
+            else
+                frecuency_table[text[i]] = 0;
+        }
+
+        return frecuency_table;
+    }
 
 
     static #fill_vignere_table(table, mode) {
