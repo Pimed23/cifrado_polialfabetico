@@ -1,4 +1,5 @@
 const fs = require("fs")
+const spanishAlphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
 const spanishFrequencies = [11.72, 1.49, 3.87, 4.67, 13.72, 0.69, 1.00, 
 							 1.18, 5.28, 0.52, 0.11, 5.24, 3.08, 6.83,
 							 8.44, 2.89, 1.11, 6.41, 7.20, 4.60, 4.55,
@@ -117,18 +118,29 @@ function getKeyCharacter(languageFrequenciesTable, table){
 	return [index, previousIndex]
 }
 
+function getKeys(subCryptograms){
+	var keys = ['']
+	for(let i = 0; i < subCryptograms.length; i++){
+		let table = frequencyTable(subCryptograms[i])	
+		let possibleKeys = getKeyCharacter(spanishFrequencies, table)	
+		let keysBuild = []
+		keys.forEach((value)=>{
+			for(let j = 0; j < possibleKeys.length; j++){
+				keysBuild.push(value + spanishAlphabet[possibleKeys[j]])		
+			}	
+		})
+		keys = [...keysBuild]
+	}
+	return keys
+}
+
 class Decrypt{
 	static kasiski(text){
 		let repetitiveTable = findRepetitiveStrings(text)
 		let L = MCD(repetitiveTable)
 		let subCryptograms = getSubcryptograms(text, L)
-		console.log(subCryptograms)
-		for(let i =0; i< subCryptograms.length; i++){
-			let table = frequencyTable(subCryptograms[i])	
-			let possibleKeys = getKeyCharacter(spanishFrequencies, table)	
-			console.log(possibleKeys)
-		}
-		
+		let keys = getKeys(subCryptograms)
+		console.log(keys)
 	}
 }
 
