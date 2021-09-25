@@ -6,6 +6,7 @@ const spanishFrequencies = [11.72, 1.49, 3.87, 4.67, 13.72, 0.69, 1.00,
 							 1.05, 0.04, 0.14, 1.09, 0.47]
 
 function MCD(values){
+	//MCD has changed to maximun common factor
 	const lowestValue = Math.min(...values)
 	var maxDivider = -1
 	var bestFactor = 1
@@ -34,7 +35,7 @@ function findRepetitiveStrings(text){
 		for(let j = i + 3; j < text.length - 3; j++){
 			let secondTrigram = text[j] + text[j+1] + text[j+2]
 			if(firstTrigram === secondTrigram){
-				trigrams[firstTrigram].push(j-(i+3)+3) //i+3-j+3 numero de caracteres que separan los trigramas
+				trigrams[firstTrigram].push(j-(i+3)+3) //numero de caracteres que separan los trigramas
 				break
 			}		
 		}
@@ -102,7 +103,7 @@ function getSubcryptograms(text,L){
 }
 
 function getKeyCharacter(languageFrequenciesTable, table){
-	//getting min, we probably need more than 1
+	//getting min, we currently have 2, we probably need more
 	let minEuclideanDistance = Number.MAX_VALUE
 	let previousIndex = 0
 	let index = 0
@@ -123,6 +124,7 @@ function getKeyCharacter(languageFrequenciesTable, table){
 }
 
 function getKeys(subCryptograms){
+	//we have more than 1 possible key, this function build all the possible keys 
 	var keys = ['']
 	for(let i = 0; i < subCryptograms.length; i++){
 		let table = frequencyTable(subCryptograms[i])	
