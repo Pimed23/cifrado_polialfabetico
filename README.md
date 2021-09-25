@@ -282,22 +282,26 @@ DURANTELAPRIMERAGUERRAMUNDIALWILLIAMFREDERICKFRIEDMANSIRVIOCOMOTENIENTEENLAUNIDA
 > 
 ```js
 static kasiski(text){
-  let repetitiveTable = findRepetitiveStrings(text)
+	let repetitiveTable = findRepetitiveStrings(text)
 	let L = MCD(repetitiveTable)
 	let subCryptograms = getSubcryptograms(text, L)
-	console.log(subCryptograms)
-	for(let i =0; i< subCryptograms.length; i++){
-	  let table = frequencyTable(subCryptograms[i])	
-	  let possibleKeys = getKeyCharacter(spanishFrequencies, table)	
-	  console.log(possibleKeys)
-	}
+	let keys = getKeys(subCryptograms)
+	return keys
 }
 ```
 >
 > La clave encontrada es:
-> 
+```txt
+DAVINCI
+```
+> Nuestro algoritmo encuentra más de una posible clave:
+> ![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/develop-vignere/results/kasiskiKeysEjercicio19.PNG)
 > El texto claro es el siguiente:
 >
 ```txt
-
+JACQUESSAUNIEREELRENOMBRADOCONSERVADORAVANZABATAMBALEANDOSEBAJOLABOVEDADELAGRANGALERIADELMUSEOARREMETIOCONTRALAPRIMERAPINTURAQUEVIOUNCARAVAGGIOAGARRANDOELMARCODORADOAQUELHOMBREDESETENTAYSEISAÑOSTIRODELAOBRADEARTEHASTAQUELAARRANCODELAPAREDYSEDESPLOMOCAYENDOBOCAARRIBACONELLIENZOENCIMATALCOMOHABIAPREVISTOCERCASEOYOELCHASQUIDODEUNAREJADEHIERROQUEALCERRARSEBLOQUEABAELACCESOALASALAELSUELODEMADERATEMBLOLEJOSSEDISPAROUNAALARMAELCONSERVADORSEQUEDOAHITENDIDOUNMOMENTOJADEANDOEVALUANDOLASITUACIONTODAVIAESTOYVIVOSEDIOLAVUELTASEDESEMBARAZODELLIENZOYBUSCOCONLAMIRADAALGUNSITIODONDEESCONDERSEENAQUELESPACIOCAVERNOSO
 ```
+>Nuestro resultado mostrado es:
+>![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/develop-vignere/results/kasiskiTextoClaroEjercicio19.PNG)
+>Comprobamos el resultado usando un software tercero obteniendo el mismo resultado:
+>![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/develop-vignere/results/resultadoSoftwareEjercicio19.PNG)
