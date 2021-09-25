@@ -295,13 +295,13 @@ static kasiski(text){
 DAVINCI
 ```
 > Nuestro algoritmo encuentra más de una posible clave:
-> ![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/develop-vignere/results/kasiskiKeysEjercicio19.PNG)
+> ![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/main/results/kasiskiKeysEjercicio19.PNG)
 > El texto claro es el siguiente:
 >
 ```txt
 JACQUESSAUNIEREELRENOMBRADOCONSERVADORAVANZABATAMBALEANDOSEBAJOLABOVEDADELAGRANGALERIADELMUSEOARREMETIOCONTRALAPRIMERAPINTURAQUEVIOUNCARAVAGGIOAGARRANDOELMARCODORADOAQUELHOMBREDESETENTAYSEISAÑOSTIRODELAOBRADEARTEHASTAQUELAARRANCODELAPAREDYSEDESPLOMOCAYENDOBOCAARRIBACONELLIENZOENCIMATALCOMOHABIAPREVISTOCERCASEOYOELCHASQUIDODEUNAREJADEHIERROQUEALCERRARSEBLOQUEABAELACCESOALASALAELSUELODEMADERATEMBLOLEJOSSEDISPAROUNAALARMAELCONSERVADORSEQUEDOAHITENDIDOUNMOMENTOJADEANDOEVALUANDOLASITUACIONTODAVIAESTOYVIVOSEDIOLAVUELTASEDESEMBARAZODELLIENZOYBUSCOCONLAMIRADAALGUNSITIODONDEESCONDERSEENAQUELESPACIOCAVERNOSO
 ```
 >Nuestro resultado mostrado es:
->![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/develop-vignere/results/kasiskiTextoClaroEjercicio19.PNG)
+>![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/main/results/kasiskiTextoClaroEjercicio19.PNG)
 >Comprobamos el resultado usando un software tercero obteniendo el mismo resultado:
->![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/develop-vignere/results/resultadoSoftwareEjercicio19.PNG)
+>![alt text](https://github.com/Pimed23/cifrado_polialfabetico/blob/main/results/resultadoSoftwareEjercicio19.PNG)
