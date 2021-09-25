@@ -50,4 +50,4 @@ console.log(keys)
 const decryptedText = keys.map((value)=>{
 	return Encrypt.decrypt_vignere(data_ejercicio19, value, 0);
 })
-//console.log(decryptedText)
+console.log(decryptedText[0])
