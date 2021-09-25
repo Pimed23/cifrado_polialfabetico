@@ -7,17 +7,21 @@ const spanishFrequencies = [11.72, 1.49, 3.87, 4.67, 13.72, 0.69, 1.00,
 
 function MCD(values){
 	const lowestValue = Math.min(...values)
+	var maxDivider = -1
+	var bestFactor = 1
 	for(let factor = lowestValue; factor > 1; factor--){
-		let isCommonDivisor = true
+		let totalDivider = 0
 		for(let i = 0; i < values.length; i++){
-			if(values[i] % factor !== 0){
-				isCommonDivisor = false; break;
-			}
+			if(values[i] % factor !== 0)
+				continue
+			totalDivider ++
 		}
-		if(isCommonDivisor)
-			return factor
+		if(totalDivider >= maxDivider){
+			maxDivider = totalDivider
+			bestFactor = factor
+		}
 	}
-	return 1
+	return bestFactor
 }
 
 function findRepetitiveStrings(text){
@@ -140,10 +144,8 @@ class Decrypt{
 		let L = MCD(repetitiveTable)
 		let subCryptograms = getSubcryptograms(text, L)
 		let keys = getKeys(subCryptograms)
-		console.log(keys)
+		return keys
 	}
 }
 
-let text = 'LNUDVMUYRMUDVLLPXAFZUEFAIOVWVMUOVMUEVMUEZCUDVSYWCIVCFGUCUNYCGALLGRCYTIJTRNNPJQOPJEMZITYLIAYYKRYEFDUDCAMAVRMZEAMBLEXPJCCQIEHPJTYXVNMLAEZTIMUOFRUFC'
-
-Decrypt.kasiski(text)
+module.exports = Decrypt;

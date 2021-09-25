@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Encrypt = require('./encrypt.js');
-
+const Decrypt = require('./decrypt.js');
 // Ejercicio 11
 let data_ejercicio11 = fs.readFileSync(`./resources/Ejercicio11_text.txt`,'utf-8');
 let preprocessed_text_mod27 = Encrypt.preprocessing_mod27(data_ejercicio11);
@@ -43,3 +43,11 @@ let data_ejercicio18 = fs.readFileSync(`./resources/Ejercicio18_text.txt`,'utf-8
 let decrypt_autokey = Encrypt.decrypt_autokey(data_ejercicio18, "UNODELOSMASGRANDESCRIPTOGRAFOS", 0);
 fs.writeFileSync('./results/Ejercicio18_autokey.txt', decrypt_autokey);
 
+// Ejercicio 19
+let data_ejercicio19 = fs.readFileSync(`./resources/Ejercicio19_text.txt`,'utf-8');
+let keys = Decrypt.kasiski(data_ejercicio19);
+console.log(keys)
+const decryptedText = keys.map((value)=>{
+	return Encrypt.decrypt_vignere(data_ejercicio19, value, 0);
+})
+//console.log(decryptedText)
